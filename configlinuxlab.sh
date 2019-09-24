@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum -y update grub2-common
+yum -y update
 
 yum install -y epel-release
 yum install -y xrdp
