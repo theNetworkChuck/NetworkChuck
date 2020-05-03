@@ -2,6 +2,9 @@
 
 # https://github.com/pi-hole/docker-pi-hole/blob/master/README.md
 
+# Identify the directory that the script is present in
+DIR=$(dirname "${BASH_SOURCE[0]}")
+
 docker run -d \
     --name pihole \
     -p 53:53/tcp -p 53:53/udp \
@@ -9,8 +12,8 @@ docker run -d \
     -p 443:443 \
     -p 8080:8080 \
     -e TZ="America/Chicago" \
-    -v "$(pwd)/etc-pihole/:/etc/pihole/" \
-    -v "$(pwd)/etc-dnsmasq.d/:/etc/dnsmasq.d/" \
+    -v "$DIR/etc-pihole/:/etc/pihole/" \
+    -v "$DIR/etc-dnsmasq.d/:/etc/dnsmasq.d/" \
     --dns=127.0.0.1 --dns=1.1.1.1 \
     --restart=unless-stopped \
     thenetworkchuck/networkchuck_pihole
@@ -31,4 +34,3 @@ for i in $(seq 1 20); do
         exit 1
     fi
 done;
-© 2020 GitHub, Inc.
