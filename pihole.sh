@@ -31,4 +31,3 @@ for i in $(seq 1 20); do
         exit 1
     fi
 done;
-© 2020 GitHub, Inc.
